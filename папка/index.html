@@ -1,0 +1,545 @@
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Интернет-магазин игрушек "Солнышко"</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+    <header>
+        <h1>Интернет-магазин игрушек "Солнышко"</h1>
+        <p>Мы предлагаем широкий ассортимент игрушек для детей и взрослых. Найдите что-то особенное для себя или ваших близких!</p>
+    </header>
+
+ <nav>
+    <a href=kiril.html>Главная</a>
+    <a href="index.html">Товары</a>
+ 
+
+</nav>
+
+    <main class="container">
+        <section id="home" class="section">
+            <div class="search-bar" style="text-align: center; margin: 20px;">
+                <div class="sidebar-toggle"></div>
+                <input type="text" id="searchInput" placeholder="Поиск товаров..." style="width: 300px; padding: 8px;">
+            <h2>Товары</h2>
+            <p>Выберите товары для заказа.</p>
+            
+            <div class="product-card">
+                <img src="C:\Users\Administrator\Desktop\слава\папка\1.webp" alt="Робот-разведчик">
+                <h3>Робот-разведчик</h3>
+                <p>Интерактивная игрушка, управляется с пульта и реагирует на голосовые команды.</p>
+            
+                <ul>
+                    <li><strong>Возраст:</strong> от 6 лет</li>
+                    <li><strong>Тип:</strong> Интерактивный</li>
+                    <li><strong>Размер:</strong> 20 см</li>
+                </ul>
+            
+                <p><strong>Цена:</strong> 1590 ₽</p>
+            
+                <div>
+                    <span style="background-color: #ffcc00; padding: 2px 6px; border-radius: 5px;">★ Хит продаж</span>
+                    <span style="background-color: #00cc66; padding: 2px 6px; border-radius: 5px;">🌱 Экотовар</span>
+                </div>
+            
+                <div style="margin-top: 5px;">
+                    <label>Оценка:</label>
+                    ⭐⭐⭐⭐☆
+                </div>
+            
+          
+               
+                <button class="add-to-cart" data-name="Робот-разведчик" data-price="1590">Добавить в корзину</button>
+            
+                <div class="product-reviews">
+                    <h4>Отзывы:</h4>
+                    <ul>
+                        <li>Анна: Очень понравился сыну! Реагирует на голос.</li>
+                        <li>Илья: Отличный, но пульт иногда глючит.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="C:\Users\Administrator\Desktop\слава\папка\2.webp" alt="Пазл 3D «Замок»">
+                <h3>Пазл 3D «Замок»</h3>
+                <p>Развивает внимание и пространственное мышление. 150 деталей.</p>
+            
+                <ul>
+                    <li><strong>Возраст:</strong> от 8 лет</li>
+                    <li><strong>Тип:</strong> Развивающий</li>
+                    <li><strong>Материал:</strong> Пенокартон</li>
+                </ul>
+            
+                <p><strong>Цена:</strong> 890 ₽</p>
+            
+                <div>
+                    <span style="background-color: #ffcc00; padding: 2px 6px; border-radius: 5px;">🎁 Новинка</span>
+                </div>
+            
+                <div style="margin-top: 5px;">
+                    <label>Оценка:</label>
+                    ⭐⭐⭐⭐⭐
+                </div>
+            
+                <button class="add-to-cart" data-name="Пазл 3D «Замок»" data-price="890">Добавить в корзину</button>
+            
+                <div class="product-reviews">
+                    <h4>Отзывы:</h4>
+                    <ul>
+                        <li>Лена: Собрали с дочкой за вечер — очень круто!</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="C:\Users\Administrator\Desktop\слава\папка\3.webp" alt="Настольная игра «Космическое приключение»">
+                <h3>Игра «Космическое приключение»</h3>
+                <p>Отличная семейная игра на стратегию и воображение. От 2 до 6 игроков.</p>
+            
+                <ul>
+                    <li><strong>Возраст:</strong> от 10 лет</li>
+                    <li><strong>Время партии:</strong> 45 мин</li>
+                    <li><strong>Тип:</strong> Настольная</li>
+                </ul>
+            
+                <p><strong>Цена:</strong> 1290 ₽</p>
+            
+                <div>
+                    <span style="background-color: #00cc66; padding: 2px 6px; border-radius: 5px;">🎯 Для школ</span>
+                </div>
+            
+                <div style="margin-top: 5px;">
+                    <label>Оценка:</label>
+                    ⭐⭐⭐⭐☆
+                </div>
+            
+                <button class="add-to-cart" data-name="Настольная игра «Космическое приключение»" data-price="1290">Добавить в корзину</button>
+            
+                <div class="product-reviews">
+                    <h4>Отзывы:</h4>
+                    <ul>
+                        <li>Макс: Играем всей семьёй! Даже бабушка втянулась.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\Administrator\Desktop\слава\папка\4.webp" alt="Фигурка динозавра">
+                <h3>Фигурка динозавра «Ти-рекс»</h3>
+                <p>Реалистичная игрушка с подвижными элементами. Идеальна для коллекции или игры.</p>
+            
+                <ul>
+                    <li><strong>Возраст:</strong> от 4 лет</li>
+                    <li><strong>Материал:</strong> Пластик</li>
+                    <li><strong>Длина:</strong> 30 см</li>
+                </ul>
+            
+                <p><strong>Цена:</strong> 690 ₽</p>
+            
+                <div>
+                    <span style="background-color: #ffcc00; padding: 2px 6px; border-radius: 5px;">🦖 Популярное</span>
+                </div>
+            
+                <div style="margin-top: 5px;">
+                    <label>Оценка:</label>
+                    ⭐⭐⭐⭐☆
+                </div>
+            
+                <button class="add-to-cart" data-name="Фигурка Ти-рекса" data-price="690">Добавить в корзину</button>
+            
+                <div class="product-reviews">
+                    <h4>Отзывы:</h4>
+                    <ul>
+                        <li>Кирилл: Прочный, не ломается при игре, сыну нравится.</li>
+                        <li>Оля: Реалистично выглядит, но громко рычит.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="C:\Users\Administrator\Desktop\слава\папка\5.webp" alt="Плюшевый мишка">
+                <h3>Плюшевый мишка «Боня»</h3>
+                <p>Мягкий и уютный мишка — идеальный подарок для малышей и влюблённых.</p>
+            
+                <ul>
+                    <li><strong>Возраст:</strong> от 3 лет</li>
+                    <li><strong>Высота:</strong> 50 см</li>
+                    <li><strong>Материал:</strong> Гипоаллергенный плюш</li>
+                </ul>
+            
+                <p><strong>Цена:</strong> 1150 ₽</p>
+            
+                <div>
+                    <span style="background-color: #ff66cc; padding: 2px 6px; border-radius: 5px;">💖 Лучший подарок</span>
+                </div>
+            
+                <div style="margin-top: 5px;">
+                    <label>Оценка:</label>
+                    ⭐⭐⭐⭐⭐
+                </div>
+            
+                <button class="add-to-cart" data-name="Плюшевый мишка Боня" data-price="1150">Добавить в корзину</button>
+            
+                <div class="product-reviews">
+                    <h4>Отзывы:</h4>
+                    <ul>
+                        <li>Настя: Очень мягкий! Дочка обожает его.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="C:\Users\Administrator\Desktop\слава\папка\6.jpg" alt="Набор слаймов">
+                <h3>Набор слаймов «Лаборатория цвета»</h3>
+                <p>Разноцветные слаймы с блёстками, ароматами и возможностью смешивать.</p>
+            
+                <ul>
+                    <li><strong>Возраст:</strong> от 5 лет</li>
+                    <li><strong>Кол-во цветов:</strong> 6</li>
+                    <li><strong>Особенности:</strong> Безопасные красители</li>
+                </ul>
+            
+                <p><strong>Цена:</strong> 750 ₽</p>
+            
+                <div>
+                    <span style="background-color: #cc99ff; padding: 2px 6px; border-radius: 5px;">🧪 Творчество</span>
+                </div>
+            
+                <div style="margin-top: 5px;">
+                    <label>Оценка:</label>
+                    ⭐⭐⭐⭐☆
+                </div>
+            
+                <button class="add-to-cart" data-name="Набор слаймов" data-price="750">Добавить в корзину</button>
+            
+                <div class="product-reviews">
+                    <h4>Отзывы:</h4>
+                    <ul>
+                        <li>Ира: Удобно мешать, не прилипает к рукам.</li>
+                        <li>Вадим: Запахи прикольные, дочь в восторге.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+       
+     
+    </main>
+    <div class="sidebar" id="sidebar">
+    <h3>Категории</h3>
+    <a href="index.html">Игрушки для детей</a>
+        <a href="vzr.html">Игрушки для взрослых</a>
+
+  
+</div>
+
+<!-- Кнопка для открытия чата -->
+<button class="chat-button" onclick="toggleChat()">💬</button>
+
+<!-- Мини-чат -->
+<div class="chat-box" id="chatBox">
+    <div class="chat-box-header">Поддержка</div>
+    <div class="chat-box-messages" id="chatMessages"></div>
+    <div class="chat-box-input">
+        <input type="text" id="chatInput" placeholder="Ваше сообщение...">
+        <button onclick="sendMessage()"></button>
+    </div>
+</div>
+
+
+<script>
+    // Функция для открытия/закрытия чата
+    function toggleChat() {
+        var chatBox = document.getElementById('chatBox');
+        if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+            chatBox.style.display = 'flex';
+        } else {
+            chatBox.style.display = 'none';
+        }
+    }
+
+    // Функция для отправки сообщений
+    function sendMessage() {
+        var messageInput = document.getElementById('chatInput');
+        var message = messageInput.value;
+        if (message.trim() !== '') {
+            var chatMessages = document.getElementById('chatMessages');
+            var messageElement = document.createElement('div');
+            messageElement.textContent = "Вы: " + message;
+            chatMessages.appendChild(messageElement);
+            messageInput.value = '';
+
+            // Прокрутка вниз, чтобы видеть новое сообщение
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
+</script>
+<script>
+  // Добавление товара в корзину
+ 
+    // Обработка кнопок "Добавить в корзину"
+    document.querySelectorAll('.add-to-cart').forEach((button, index) => {
+        button.addEventListener('click', () => {
+            const name = button.getAttribute('data-name');
+            const price = parseInt(button.getAttribute('data-price'));
+            const qtyInput = document.querySelectorAll('.product-qty')[index];
+            const quantity = parseInt(qtyInput.value) || 1;
+            addToCart(name, price, quantity);
+        });
+    });
+
+    // Функция добавления в корзину
+    function addToCart(name, price, quantity) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({ name, price, quantity });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${name} (${quantity} шт.) добавлен в корзину!`);
+    }
+
+    </script>
+
+  
+
+    <!-- Кнопка для открытия чата -->
+    <button class="chat-button" onclick="toggleChat()">💬</button>
+
+    <!-- Мини-чат -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-box-header">Поддержка</div>
+        <div class="chat-box-messages" id="chatMessages"></div>
+        <div class="chat-box-input">
+            <input type="text" id="chatInput" placeholder="Ваше сообщение...">
+            <button onclick="sendMessage()"></button>
+        </div>
+    </div>
+
+    <script>
+        // Функция для открытия/закрытия чата
+        function toggleChat() {
+            var chatBox = document.getElementById('chatBox');
+            if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+                chatBox.style.display = 'flex';
+            } else {
+                chatBox.style.display = 'none';
+            }
+        }
+
+           // Функция для отправки сообщений
+        function sendMessage() {
+            var messageInput = document.getElementById('chatInput');
+            var message = messageInput.value;
+            if (message.trim() !== '') {
+                var chatMessages = document.getElementById('chatMessages');
+                var messageElement = document.createElement('div');
+                messageElement.textContent = "Вы: " + message;
+                chatMessages.appendChild(messageElement);
+                messageInput.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Прокрутка вниз
+
+
+            }
+        }
+         function checkEnter(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Предотвращаем переход на новую строку
+                sendMessage(); // Отправляем сообщение
+            }
+        }
+    </script>
+
+    <style>
+          .video-container {
+            text-align: center;
+            margin: 20px 0; /* Отступы сверху и снизу */
+        }
+        video {
+            width: 800px; /* Фиксированная ширина */
+            height: 450px; /* Фиксированная высота */
+            max-width: 100%; /* Адаптивная ширина для меньших экранов */
+            height: auto; /* Автоматическая высота */
+        }
+        /* Стили для мини-чата */
+        .chat-box {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-box-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .chat-box-messages {
+            padding: 10px;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+        .chat-box-input {
+            display: flex;
+            padding: 10px;
+        }
+        .chat-box-input input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .chat-box-input button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .chat-box-input button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+<button class="register-button" onclick="location.href='account.html'">👤</button>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.add-to-cart').forEach((button, index) => {
+            button.addEventListener('click', () => {
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                const qtyInput = document.querySelectorAll('.product-qty')[index];
+                const quantity = parseInt(qtyInput.value) || 1;
+                addToCart(name, price, quantity);
+            });
+        });
+    
+        function addToCart(name, price, quantity) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ name, price, quantity });
+            }
+    
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} (${quantity} шт.) добавлен в корзину!`);
+        }
+    });
+    </script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+      
+        const firebaseConfig = {
+          apiKey: "AIzaSyCuiYXPdd4hhvRXAL7G2I-FzDfFfIwybmw",
+          authDomain: "solnishko-e2aa7.firebaseapp.com",
+          projectId: "solnishko-e2aa7",
+          storageBucket: "solnishko-e2aa7.appspot.com",
+          messagingSenderId: "538778915897",
+          appId: "1:538778915897:web:95a42b00ee680789a9e9e8",
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+      
+        onAuthStateChanged(auth, (user) => {
+          if (!user) {
+            alert("Пожалуйста, войдите, чтобы добавлять товары в корзину.");
+          } else {
+            initAddToCart(user);
+          }
+        });
+      
+        function initAddToCart(user) {
+          document.querySelectorAll('.add-to-cart').forEach((button, index) => {
+            button.addEventListener('click', async () => {
+              const name = button.getAttribute('data-name');
+              const price = parseInt(button.getAttribute('data-price'));
+              const qtyInput = document.querySelectorAll('.product-qty')[index];
+              const quantity = parseInt(qtyInput.value) || 1;
+      
+              // ✅ локальная корзина
+              addToLocalCart(name, price, quantity);
+      
+              // ✅ облачная корзина
+              await addToFirestoreCart(user.uid, name, price, quantity);
+      
+              alert(`${name} (${quantity} шт.) добавлен в корзину!`);
+            });
+          });
+        }
+      
+        function addToLocalCart(name, price, quantity) {
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const existingItem = cart.find(item => item.name === name);
+          if (existingItem) {
+            existingItem.quantity += quantity;
+          } else {
+            cart.push({ name, price, quantity });
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+        }
+      
+        async function addToFirestoreCart(uid, name, price, quantity) {
+          const cartRef = doc(db, "carts", uid);
+          const cartSnap = await getDoc(cartRef);
+      
+          let items = cartSnap.exists() ? cartSnap.data().items : [];
+      
+          const existingItem = items.find(item => item.name === name);
+          if (existingItem) {
+            existingItem.quantity += quantity;
+          } else {
+            const id = crypto.randomUUID();
+            items.push({ id, name, price, quantity });
+          }
+      
+          await setDoc(cartRef, { items }, { merge: true });
+        }
+      </script>
+      <script>
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            const products = document.querySelectorAll(".product-card");
+    
+            products.forEach(product => {
+                const name = product.querySelector("h3").textContent.toLowerCase();
+                const description = product.querySelector("p").textContent.toLowerCase();
+    
+                if (name.includes(query) || description.includes(query)) {
+                    product.style.visibility = "visible";
+                    product.style.height = "auto";
+                    product.style.margin = "15px 0";
+                    product.style.opacity = "1";
+                } else {
+                    product.style.visibility = "hidden";
+                    product.style.height = "0";
+                    product.style.margin = "0";
+                    product.style.opacity = "0";
+                }
+            });
+        });
+    </script>
+    </body>
+    </html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Стилизация для кнопок */
+        .styled-button {
+            background-color: #4CAF50; /* Зеленый фон */
+            color: white; /* Белый текст */
+            border: none; /* Без границы */
+            padding: 10px 20px; /* Отступы */
+            text-align: center; /* Выравнивание текста */
+            text-decoration: none; /* Без подчеркивания */
+            display: inline-block; /* Отображение в строку */
+            font-size: 16px; /* Размер шрифта */
+            margin: 10px 2px; /* Отступы между кнопками */
+            cursor: pointer; /* Указатель при наведении */
+            border-radius: 5px; /* Закругленные углы */
+        }
+
+        /* Изменение цвета кнопок при наведении */
+        .styled-button:hover {
+            background-color: #45a049; /* Темно-зеленый при наведении */
+        }
+
+        /* Убираем маркеры списка */
+        ul {
+            list-style-type: none; /* Убираем стандартные маркеры */
+            padding: 0; /* Убираем отступы */
+        }
+
+        /* Основные стили для контейнера */
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        footer a {
+            margin: 0 10px;
+            color: #4CAF50; /* Цвет ссылок */
+            text-decoration: none; /* Без подчеркивания */
+        }
+
+        footer a:hover {
+            text-decoration: underline; /* Подчеркивание при наведении */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Корзина</h1>
+</header>
+
+ <nav>
+    <a href=kiril.html>Главная</a>
+    <a href="index.html">Товары</a> <!-- Кнопка Товары -->
+    <a href="cart.html">Корзина</a>
+</nav>
+<main class="container">
+    <h2>Ваши товары</h2>
+    <ul id="cartItems"></ul>
+    <div id="totalPrice">Итого: 0₽</div>
+    <button id="payButton" class="styled-button">Оплатить</button>
+    <button id="clearCart" class="styled-button">Очистить корзину</button>
+</main>
+
+<script>
+    function updateCart() {
+        const cartItems = document.getElementById('cartItems');
+        cartItems.innerHTML = '';
+        let totalPrice = 0;
+
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const itemCounts = {};
+
+        // Подсчет количества каждого товара
+        cart.forEach(item => {
+            if (itemCounts[item.name]) {
+                itemCounts[item.name].count += 1;
+            } else {
+                itemCounts[item.name] = { price: item.price, count: 1 };
+            }
+        });
+
+        // Отображение товаров с их количеством
+        for (const [name, { price, count }] of Object.entries(itemCounts)) {
+            const li = document.createElement('li');
+            li.textContent = `${name} - ${price}₽ x ${count}`;
+            cartItems.appendChild(li);
+            totalPrice += price * count; // Увеличиваем общую стоимость
+        }
+
+        document.getElementById('totalPrice').textContent = `Итого: ${totalPrice}₽`;
+    }
+
+    document.getElementById('clearCart').addEventListener('click', () => {
+        localStorage.removeItem('cart');
+        updateCart();
+        alert('Корзина очищена!');
+    });
+
+    document.getElementById('payButton').addEventListener('click', () => {
+        const totalPrice = [...document.querySelectorAll('#cartItems li')]
+            .reduce((sum, li) => {
+                               const parts = li.textContent.split(' - ')[1].split(' x ');
+                return sum + (parseInt(parts[0].replace('₽', '').trim()) * parseInt(parts[1]));
+            }, 0);
+        alert(`Спасибо за покупку на сумму ${totalPrice}₽!`);
+    });
+
+    // Обновление корзины при загрузке страницы
+    updateCart();
+</script>
+
+<footer>
+    <p>&copy; 2023 Ваш Магазин. Все права защищены.</p>
+    <a href="#privacy">Политика конфиденциальности</a>
+    <a href="#terms">Условия использования</a>
+</footer>
+
+</body>
+</html>
+

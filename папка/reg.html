@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Регистрация и вход - Солнышко</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 30px;
+    }
+
+    a.home-link {
+      display: inline-block;
+      margin: 10px auto;
+      color: #007bff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    section {
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      display: block;
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+    .home-button {
+  display: inline-block;
+  margin: 20px auto 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+}
+
+  </style>
+</head>
+<body>
+    
+    <a href="index.html" class="home-button">⬅ На главную</a>
+
+  <h1>Интернет-магазин игрушек "Солнышко"</h1>
+  <p>Зарегистрируйтесь или войдите в ваш аккаунт:</p>
+
+  <!-- Регистрация -->
+  <section>
+    <h2>Регистрация</h2>
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Имя" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Пароль" required />
+      <input type="password" id="confirm-password" placeholder="Подтвердите пароль" required />
+      <button type="submit">Зарегистрироваться</button>
+      <a href="login.html" class="home-button" style="margin-top: 15px; background-color: #17a2b8;">
+        Уже есть аккаунт? Войти
+      </a>
+    </form>
+  </section>
+
+ 
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuiYXPdd4hhvRXAL7G2I-FzDfFfIwybmw",
+      authDomain: "solnishko-e2aa7.firebaseapp.com",
+      projectId: "solnishko-e2aa7",
+      storageBucket: "solnishko-e2aa7.appspot.com",
+      messagingSenderId: "538778915897",
+      appId: "1:538778915897:web:95a42b00ee680789a9e9e8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Регистрация
+    document.getElementById("registerForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+
+      if (password !== confirmPassword) {
+        alert("Пароли не совпадают!");
+        return;
+      }
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Регистрация успешна! Теперь войдите в систему.");
+          document.getElementById("login").scrollIntoView({ behavior: "smooth" });
+        })
+        .catch((error) => {
+          alert("Ошибка регистрации: " + error.message);
+        });
+    });
+
+    // Вход
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Вход выполнен!");
+          window.location.href = "account.html";
+        })
+        .catch((error) => {
+          alert("Ошибка входа: " + error.message);
+        });
+    });
+  </script>
+  
+</body>
+</html>

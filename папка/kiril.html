@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин игрушек "Солнышко"</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+<header>
+    <h1>Добро пожаловать в интернет-магазин игрушек "Солнышко"</h1>
+    <p>Мы предлагаем широкий ассортимент игрушек для детей и взрослых. Найдите что-то особенное для себя или ваших близких!</p>
+</header>
+
+<nav>
+    <a href="kiril.html">Главная</a>
+    <a href="index.html">Товары</a>
+ 
+</nav>
+
+
+<div class="sidebar" id="sidebar">
+    <h3>Категории</h3>
+    <a href="index.html ">Игрушки для детей</a>                                                                                                               
+
+    <a href="vzr.html">Игрушки для взрослых</a>
+
+    <a href="accii.html">Акции</a>
+</div>
+
+
+<main class="main-content">
+    <section id="about-shop" class="section">
+        <h2>О нашем магазине</h2>
+        <p>Интернет-магазин "Солнышко" предлагает лучшие игрушки по доступным ценам. Мы заботимся о качестве и безопасности продукции, а также о том, чтобы каждый наш клиент остался доволен покупкой.</p>
+        <p>У нас вы найдете товары для всех возрастов, от малышей до взрослых, а также эксклюзивные и редкие игрушки, которые можно найти только у нас.</p>
+    </section>
+
+    <section id="why-us" class="section">
+        <h2>Почему выбирают нас?</h2>
+        <ul>
+            <li><strong>Широкий ассортимент:</strong> Игрушки для детей всех возрастов, коллекционные предметы, аксессуары и многое другое.</li>
+            <li><strong>Гарантия качества:</strong> Мы сотрудничаем только с проверенными поставщиками, которые предоставляют сертифицированную продукцию.</li>
+            <li><strong>Удобный сервис:</strong> Простой и удобный процесс покупки, быстрая доставка и качественная поддержка.</li>
+            <li><strong>Акции и скидки:</strong> Регулярные акции и скидки на популярные товары для ваших любимых.</li>
+        </ul>
+    </section>
+
+    <section id="shop-now" class="section">
+        <h2>Готовы сделать покупку?</h2>
+        <p>Посетите наш каталог, чтобы выбрать игрушки, которые подойдут именно вам!</p>
+        <a href="index.html" class="button">Перейти в каталог</a>
+    </section>
+</main>
+
+<script>
+    function toggleChat() {
+        var chatBox = document.getElementById('chatBox');
+        if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+            chatBox.style.display = 'flex';
+        } else {
+            chatBox.style.display = 'none';
+        }
+    }
+
+    function sendMessage() {
+        var messageInput = document.getElementById('chatInput');
+        var message = messageInput.value;
+        if (message.trim() !== '') {
+            var chatMessages = document.getElementById('chatMessages');
+            var messageElement = document.createElement('div');
+            messageElement.textContent = "Вы: " + message;
+            chatMessages.appendChild(messageElement);
+            messageInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
+
+    function checkEnter(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); 
+            sendMessage(); 
+        }
+    }
+
+    
+    function closeChat() {
+        document.getElementById('chatBox').style.display = 'none';
+    }
+</script>
+
+
+<button class="chat-button" onclick="toggleChat()">💬</button>
+
+<!-- Мини-чат -->
+<div class="chat-box" id="chatBox">
+    <div class="chat-box-header">
+        Поддержка
+        <button onclick="closeChat()">×</button> <!-- Крестик для закрытия -->
+    </div>
+    <div class="chat-box-messages" id="chatMessages"></div>
+    <div class="chat-box-input">
+        <input type="text" id="chatInput" placeholder="Ваше сообщение..." onkeydown="checkEnter(event)">
+        <button onclick="sendMessage()"></button>
+    </div>
+</div>
+<button class="register-button" onclick="location.href='account.html'">👤</button>
+</body>
+</html>

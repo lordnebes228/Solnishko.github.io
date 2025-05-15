@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Личный кабинет - Солнышко</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 30px;
+    }
+
+    section {
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #user-info {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .logout-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .logout-button:hover {
+      background-color: #c82333;
+    }
+
+    .home-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .home-button:hover {
+      background-color: #0056b3;
+    }
+
+    .cabinet-section {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .cabinet-section h3 {
+      margin-top: 30px;
+      color: #444;
+    }
+
+    .cabinet-section p {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="kiril.html" class="home-button">⬅ На главную</a>
+
+  <h1>Личный кабинет</h1>
+
+  <section>
+    <p id="user-info">Загрузка информации...</p>
+    <button id="logout" class="logout-button">Выйти</button>
+
+    <div class="cabinet-section">
+      <h3>Ваша корзина</h3>
+      <div id="cart">Загрузка корзины...</div>
+      <button onclick="checkout()" style="margin-top: 10px; background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">🧾 Оформить заказ</button>
+
+      <h3>История заказов</h3>
+      <p>История заказов пока недоступна. Мы работаем над этим!</p>
+    </div>
+  </section>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuiYXPdd4hhvRXAL7G2I-FzDfFfIwybmw",
+      authDomain: "solnishko-e2aa7.firebaseapp.com",
+      projectId: "solnishko-e2aa7",
+      storageBucket: "solnishko-e2aa7.appspot.com",
+      messagingSenderId: "538778915897",
+      appId: "1:538778915897:web:95a42b00ee680789a9e9e8",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    document.getElementById("user-info").textContent = `Вы вошли как: ${user.email} `;
+    renderCart();
+  } else {
+    window.location.href = "login.html";
+  }
+});
+
+    document.getElementById("logout").addEventListener("click", () => {
+      signOut(auth).then(() => {
+        alert("Вы вышли.");
+        window.location.href = "login.html";
+      });
+    });
+
+    // 🛒 Корзина
+    async function renderCart() {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      const cartRef = doc(db, "carts", user.uid);
+      const cartSnap = await getDoc(cartRef);
+      const cartDiv = document.getElementById("cart");
+
+      if (!cartSnap.exists() || !cartSnap.data().items.length) {
+        cartDiv.innerHTML = "<p>Корзина пуста.</p>";
+        return;
+      }
+
+      const items = cartSnap.data().items;
+      cartDiv.innerHTML = "";
+      let total = 0;
+
+      items.forEach(item => {
+        total += item.price * item.quantity;
+        const block = document.createElement("div");
+        block.innerHTML = `
+          <strong>${item.name}</strong> — ${item.price}₽ × ${item.quantity} = ${item.price * item.quantity}₽<br/>
+          <button onclick="decreaseQuantity('${item.id}')">➖</button>
+          <button onclick="increaseQuantity('${item.id}')">➕</button>
+          <button onclick="removeFromCart('${item.id}')">❌</button>
+          <hr>
+        `;
+        cartDiv.appendChild(block);
+      });
+
+      cartDiv.innerHTML += `<p><strong>Итого: ${total}₽</strong></p>`;
+    }
+
+    window.increaseQuantity = async (id) => {
+      const user = auth.currentUser;
+      const cartRef = doc(db, "carts", user.uid);
+      const cartSnap = await getDoc(cartRef);
+      const items = cartSnap.data().items.map(item => {
+        if (item.id === id) item.quantity += 1;
+        return item;
+      });
+      await setDoc(cartRef, { items }, { merge: true });
+      renderCart();
+    };
+
+    window.decreaseQuantity = async (id) => {
+      const user = auth.currentUser;
+      const cartRef = doc(db, "carts", user.uid);
+      const cartSnap = await getDoc(cartRef);
+      const items = cartSnap.data().items.map(item => {
+        if (item.id === id && item.quantity > 1) item.quantity -= 1;
+        return item;
+      });
+      await setDoc(cartRef, { items }, { merge: true });
+      renderCart();
+    };
+
+    window.removeFromCart = async (id) => {
+      const user = auth.currentUser;
+      const cartRef = doc(db, "carts", user.uid);
+      const cartSnap = await getDoc(cartRef);
+      const items = cartSnap.data().items.filter(item => item.id !== id);
+      await setDoc(cartRef, { items }, { merge: true });
+      renderCart();
+    };
+
+    window.checkout = async () => {
+      const user = auth.currentUser;
+      const cartRef = doc(db, "carts", user.uid);
+      await setDoc(cartRef, { items: [] });
+      alert("Заказ оформлен! Спасибо!");
+      renderCart();
+    };
+  </script>
+<script>
+  // Функция отображения корзины
+  function displayCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartContainer = document.getElementById('cart-items');
+
+      if (!cartContainer) {
+          console.error('Не найден контейнер с id="cart-items"');
+          return;
+      }
+
+      if (cart.length === 0) {
+          cartContainer.innerHTML = '<p>Корзина пуста</p>';
+          return;
+      }
+
+      let total = 0;
+      cartContainer.innerHTML = '<ul style="list-style: none; padding: 0;">';
+      cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+
+          cartContainer.innerHTML += `
+              <li style="margin-bottom: 10px;">
+                  <strong>${item.name}</strong><br>
+                  Цена: ${item.price} ₽ × ${item.quantity} = <strong>${itemTotal} ₽</strong>
+              </li>
+          `;
+      });
+      cartContainer.innerHTML += `</ul><p><strong>Итого: ${total} ₽</strong></p>`;
+  }
+
+  // Вызов функции при загрузке страницы
+  window.addEventListener('DOMContentLoaded', displayCart);
+</script>
+
+</body>
+</html>
